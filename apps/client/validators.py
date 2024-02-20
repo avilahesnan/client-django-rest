@@ -1,14 +1,53 @@
+from validate_docbr import CPF
+import re
+
+
 def name_valid(name):
+    '''
+    Check if the name has only alphabetic characters.
+
+    Returns:
+        True or False.
+    '''
+
     return name.isalpha()
 
 
 def cpf_valid(cpf):
-    return len(cpf) == 11
+    '''
+    Checks if the CPF is valid.
+
+    Returns:
+        True or False.
+    '''
+
+    model = r'^\d{3}(\.?\d{3})?(\.?\d{3})?-?\d{2}$'
+    response = re.match(model, cpf)
+    if response:
+        check_cpf = CPF()
+        return check_cpf.validate(cpf)
+    return response
 
 
 def rg_valid(rg):
+    '''
+    Checks if the rg is valid.
+
+    Returns:
+        True or False.
+    '''
+
     return len(rg) == 9
 
 
 def phone_valid(phone):
-    return phone > 11
+    '''
+    Checks if the phone is valid.
+
+    Returns:
+        True or False.
+    '''
+
+    model = r'^\(\d{2}\)\ ?9?\d{4}\-?\d{4}$'
+    response = re.match(model, phone)
+    return response
