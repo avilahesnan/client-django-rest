@@ -26,4 +26,4 @@ def create_peoples(quantity_peoples):
         p.save()
 
 
-create_peoples(5)
+create_peoples(100)
